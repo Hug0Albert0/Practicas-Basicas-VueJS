@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Actividades Diarias</title>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+   <div id="app" class="container mt-5">
+      <h3>{{titulo}}</h3>
+      <span>{{subtitulo}}</span>
+      <input type="text" class="form-control my-3" v-model="nuevaTarea" v-on:keyup.13="agregarNuevaTarea">
+      <button class="btn btn-primary" v-on:click="agregarNuevaTarea">Agregar</button>
+      <div v-for="(tarea, indice) in tareas">
+         <div class="alert my-3" role="alert" :class="{'alert-primary': tarea.estado === 1, 'alert-success': tarea.estado === 2, 'alert-danger': tarea.estado === 3}">
+            <div class="d-flex justify-content-between">
+               <div class="d-flex align-items-center">
+                 {{indice + 1}}. {{tarea.descripcion}}
+               </div>
+               <div>
+                  <button class="btn btn-success" v-on:click="actualizarTarea(indice, 2);" >Hecho!</button>
+                  <button class="btn btn-danger"  v-on:click="actualizarTarea(indice, 3);">Cancelar</button>
+               </div>
+            </div>
+         </div>
+      </div>
+   </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="actividades.js"></script>
+</html>
