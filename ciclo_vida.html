@@ -1,0 +1,18 @@
+<!DOCTYPE html>
+<html lang="e">
+<head>
+   <meta charset="UTF-8">
+   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+   <title>Ciclo de vida VueJS</title>
+   <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+</head>
+<body>
+   <div id="app" class="container">
+      <h3 class="my-4">{{titulo}}</h3>
+      <button v-on:click ="titulo = 'Saludo cambiado'" class="btn btn-primary">Cambiar</button>
+      <button v-on:click="destruir" class="btn btn-danger">Destruir</button>
+   </div>
+</body>
+<script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+<script src="ciclo_vida.js"></script>
+</html>
