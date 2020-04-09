@@ -4,10 +4,6 @@ const app = new Vue(
       data: {
          clase_fondo : "bg-warning",
          clase_color: false
-      },
-      methods: {
-      },
-      computed: {
       }
    }
 );
