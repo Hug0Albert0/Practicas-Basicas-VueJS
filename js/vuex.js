@@ -3,7 +3,7 @@ Vue.component(
    {
       template: `
          <div>
-            <button class="btn btn-info btn-lg" @click="$store.commit('aumentar')">+</button>
+            <button class="btn btn-info btn-lg" @click="$store.commit('aumentar')">Aumentar</button>
             <h1>Numero Hijo: {{$store.state.numero}} </h1>
          </div>
       `
@@ -18,8 +18,13 @@ Vue.component(
             <h1>Numero: {{$store.state.numero}} </h1>
             <hijo_vuex></hijo_vuex>
          </div>
-      `
-   },
+      `,
+      computed: {
+         ...Vuex.mapState([
+            "numero"
+         ])
+      }
+   }
 )
 
 /*
