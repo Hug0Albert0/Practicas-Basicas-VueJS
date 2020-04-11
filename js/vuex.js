@@ -3,10 +3,17 @@ Vue.component(
    {
       template: `
          <div>
-            <button class="btn btn-info btn-lg" @click="$store.commit('aumentar')">Aumentar</button>
-            <h1>Numero Hijo: {{$store.state.numero}} </h1>
+            <button class="btn btn-info btn-lg" @click="aumentar(2)">Aumentar</button>
+            <button class="btn btn-danger btn-lg" @click="disminuir(2)">Disminuir</button>
+            <h1>Numero Hijo: {{numero}} </h1>
          </div>
-      `
+      `,
+      computed: {
+         ...Vuex.mapState(["numero"])
+      },
+      methods: {
+         ...Vuex.mapMutations(["aumentar", "disminuir"])
+      }
    },
 )
 
@@ -20,9 +27,7 @@ Vue.component(
          </div>
       `,
       computed: {
-         ...Vuex.mapState([
-            "numero"
-         ])
+         ...Vuex.mapState(["numero"])
       }
    }
 )
@@ -48,11 +53,15 @@ const store = new Vuex.Store({
       numero: 10
    },
    mutations: {
-      aumentar() {
-         this.state.numero++;
+      aumentar(state, aumento) {
+         if (state.numero < 100) {
+            state.numero += aumento;
+         }
       },
-      disminuir() {
-         this.state.numero--;
+      disminuir(state, decremento) {
+         if(state.numero > 0) {
+            state.numero -= decremento;
+         }
       }
    }
 })
